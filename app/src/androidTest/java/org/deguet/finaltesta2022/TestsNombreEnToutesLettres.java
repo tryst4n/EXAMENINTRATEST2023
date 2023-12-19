@@ -25,4 +25,55 @@ public class TestsNombreEnToutesLettres {
         Assert.assertEquals("zéro", s);
     }
 
+    @Test
+    public void nombreEnToutesLettresOk5() {
+        ServiceNombre service = new ServiceNombre();
+        String s = service.leNombreEnToutesLettres(5L);
+        Assert.assertEquals("cinq", s);
+    }
+
+    @Test
+    public void nombreEnToutesLettresOk10() {
+        ServiceNombre service = new ServiceNombre();
+        String s = service.leNombreEnToutesLettres(10L);
+        Assert.assertEquals("dix", s);
+    }
+
+    @Test
+    public void nombreEnToutesLettresOk15() {
+        ServiceNombre service = new ServiceNombre();
+        String s = service.leNombreEnToutesLettres(15L);
+        Assert.assertEquals("quinze", s);
+    }
+
+    @Test
+    public void testAccordCentPlurielPour3500() {
+        ServiceNombre service = new ServiceNombre();
+        assertEquals("trois mille cinq cents", service.leNombreEnToutesLettres(3500L));
+    }
+
+    @Test
+    public void testAccordCentPlurielPour3501() {
+        ServiceNombre service = new ServiceNombre();
+        assertEquals("trois mille cinq cent un", service.leNombreEnToutesLettres(3501L));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testParametreNull() {
+        ServiceNombre service = new ServiceNombre();
+        service.leNombreEnToutesLettres(null);
+    }
+
+    @Test
+    public void testRepresentationCorrectePourZero() {
+        ServiceNombre service = new ServiceNombre();
+        assertEquals("zéro", service.leNombreEnToutesLettres(0L));
+    }
+
+    @Test
+    public void testRepresentationCorrectePourNombreNegatif() {
+        ServiceNombre service = new ServiceNombre();
+        assertEquals("moins dix", service.leNombreEnToutesLettres(-10L));
+    }
+
 }
